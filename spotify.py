@@ -4,14 +4,25 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 # python3 spotify.py
 
+
+cid = config('SPOTIFY_CLIENT_ID')
+secret = config('SPOTIFY_CLIENT_SECRET')
+client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+
+search_query = "save a kiss ps1 jessie ware"
+
 class TrackAudioAnalysis:
 
-    def __init__(self,track_id):
+    def __init__(self,search_query):
         cid = config('SPOTIFY_CLIENT_ID')
         secret = config('SPOTIFY_CLIENT_SECRET')
         client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
         self.sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        self.track_id = track_id
+        song_search = self.sp.search(search_query, limit=1)
+        self.track_id = song_search['tracks']['items'][0]['id']
+        self.embed_url = f'https://open.spotify.com/embed/track/{self.track_id}?utm_source=generator&theme=0'
 
     def get_track_details(self):
 
@@ -74,7 +85,6 @@ class TrackAudioAnalysis:
         audio_analysis = {'tempo_reliability': tempo_reliability, 'key_reliability': key_reliability}
         return audio_analysis
 
-taa = TrackAudioAnalysis('4zN21mbAuaD0WqtmaTZZeP')
-taa.get_track_details()
+
 
 
