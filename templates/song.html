@@ -8,11 +8,11 @@
   </head>
   <body>
     <nav class="navbar justify-content-center" style="background-color: #282828;">
-                <img style="position: relative;   right: 120px;" src="static/DJ.png" height="100" width = "auto">
+                <img style="position: relative;   right: 120px;" src="/static/DJ.png" height="100" width = "auto">
                 <h1 style= "color: bisque;" >DJ Song to Setlist Generator</h1>
 
 
-                <img style="position: relative;   left: 110px;"src="static/spotify.png" height="130" width = "auto">
+                <img style="position: relative;   left: 110px;"src="/static/spotify.png" height="130" width = "auto">
       </nav>
       <br>
       <center>
@@ -21,15 +21,62 @@
       <iframe style="border-radius:12px" src= {{url}} width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
       fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+  
+     
+      </div>
       <br>
+      <div style="background-color: #282828; width: 50%;border-radius:12px">
+        <br>
+        <br>
+        <table ">
+          <tr style="color: bisque;">
+            <td style = "padding:0 100px 0 0";>
+              <h3>
+                BPM: {{(audio_features['bpm'])}}
+               </h3> 
+               <h3>
+                Popularity: {{popularity}}
+               </h3>  
+               <h3>
+                Danceability: {{(audio_features['danceability'])}}
+               </h3> 
+               <h3>
+                Energy: {{(audio_features['energy'])}}
+               </h3>        
+            </td>
+            <td></td>
+            <td></td>
+            <td >
+              <h3>
+                Key: {{(audio_features['key'])}}
+               </h3> 
+               <h3>
+                Year: {{release_year}}
+               </h3>
+               <h3>
+                Instrumental: {{(audio_features['instrumentalness'])}}
+               </h3> 
+               <h3>
+                Mood: {{(audio_features['valence'])}}
+               </h3>     
+      
+            </td>
+          
+          </tr>
+
+        </table>
+        <br>
+        <br>
+
+      </div>
+ 
       <br>
       <h5>Is this the right track?</h5>
       <form method ="POST" action="">
         <input type="submit" value="Yes" name="yesorno" class="btn btn-dark btn-sm m-1 "></button>
         <input type="submit" value = "No" name ="yesorno" class="btn btn-dark btn-sm m-1 "></button>
       </form>
-    </div>
-  </center>
+      </center>
 
 
 
