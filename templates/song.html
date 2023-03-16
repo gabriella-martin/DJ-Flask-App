@@ -25,45 +25,34 @@
      
       </div>
       <br>
-      <div style="background-color: #282828; width: 50%;border-radius:12px">
+      <div style="background-color: #282828; width: 65%;border-radius:12px">
         <br>
         <br>
-        <table ">
-          <tr style="color: bisque;">
-            <td style = "padding:0 100px 0 0";>
-              <h3>
-                BPM: {{(audio_features['bpm'])}}
-               </h3> 
-               <h3>
-                Popularity: {{popularity}}
-               </h3>  
-               <h3>
-                Danceability: {{(audio_features['danceability'])}}
-               </h3> 
-               <h3>
-                Energy: {{(audio_features['energy'])}}
-               </h3>        
-            </td>
-            <td></td>
-            <td></td>
-            <td >
-              <h3>
-                Key: {{(audio_features['key'])}}
-               </h3> 
-               <h3>
-                Year: {{release_year}}
-               </h3>
-               <h3>
-                Instrumental: {{(audio_features['instrumentalness'])}}
-               </h3> 
-               <h3>
-                Mood: {{(audio_features['valence'])}}
-               </h3>     
-      
-            </td>
-          
+        <table >
+          <tr >
+            <td style="color: bisque;padding:0 40px 0 0"><h3>BPM:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['bpm']}}</h3></td>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Key:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['key']}}</h3></td>
           </tr>
-
+          <tr>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Popularity:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{popularity}}%</h3></td>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Year:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{release_year}}</h3></td>
+          </tr>
+          <tr >
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Danceability:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['danceability']}}%</h3></td>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Vocal:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['instrumentalness']}}%</h3></td>
+          </tr>
+          <tr>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Energy:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['energy']}}%</h3></td>
+            <td style="color: bisque;padding:0 40px 0 0"><h3>Mood:</h3></td>
+            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['valence']}}%</h3></td>
+          </tr>
         </table>
         <br>
         <br>
