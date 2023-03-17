@@ -1,78 +1,121 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DJ Flask App</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar justify-content-center" style="background-color: #282828;">
-                <img style="position: relative;   right: 120px;" src="/static/DJ.png" height="100" width = "auto">
-                <h1 style= "color: bisque;" >DJ Song to Setlist Generator</h1>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DJ Flask App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
 
-                <img style="position: relative;   left: 110px;"src="/static/spotify.png" height="130" width = "auto">
-      </nav>
+<body>
+
+    <nav class="navbar justify-content-center rounded-start" >
+      <img class = "dj-image" src="/static/DJ.png" height="100" width="auto">
+      <h1 class="fade-in-class page-heading" >DJ Song to Setlist Generator</h1>
+      <img class = "spotify-image" src="/static/spotify.png" height="130" width="auto">
+    </nav>
+
+  <br>
+  <center>
+    <div id = spotify-player-container ">
       <br>
-      <center>
-    <div style="width: 75%;">
 
-      <iframe style="border-radius:12px" src= {{url}} width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
+      <br>
+
+      <iframe class = spotify-player s src={{url}} width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
       fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-  
-     
-      </div>
+  <br>
+  <br>
+</div>
+  <h5>Is this the right track?</h5>
+  <form method="POST" action="">
+    <input type="submit" value="Yes" name="yesorno" class="btn btn-dark btn-sm m-1 "></button>
+    <input type="submit" value="No" name="yesorno" class="btn btn-dark btn-sm m-1 "></button>
+  </form>
+
+    <br>
+    <div id = 'information-box'>
       <br>
-      <div style="background-color: #282828; width: 65%;border-radius:12px">
-        <br>
-        <br>
-        <table >
-          <tr >
-            <td style="color: bisque;padding:0 40px 0 0"><h3>BPM:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['bpm']}}</h3></td>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Key:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['key']}}</h3></td>
-          </tr>
-          <tr>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Popularity:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{popularity}}%</h3></td>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Year:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{release_year}}</h3></td>
-          </tr>
-          <tr >
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Danceability:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['danceability']}}%</h3></td>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Vocal:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['instrumentalness']}}%</h3></td>
-          </tr>
-          <tr>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Energy:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['energy']}}%</h3></td>
-            <td style="color: bisque;padding:0 40px 0 0"><h3>Mood:</h3></td>
-            <td style="color: white;padding:0 60px 0 0"><h3>{{audio_features['valence']}}%</h3></td>
-          </tr>
-        </table>
-        <br>
-        <br>
-
-      </div>
- 
       <br>
-      <h5>Is this the right track?</h5>
-      <form method ="POST" action="">
-        <input type="submit" value="Yes" name="yesorno" class="btn btn-dark btn-sm m-1 "></button>
-        <input type="submit" value = "No" name ="yesorno" class="btn btn-dark btn-sm m-1 "></button>
-      </form>
-      </center>
+      <table>
+        <tr>
+          <td >
+            <h3 class = "table-data-name fade-in-class">BPM:</h3>
+         </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['bpm']}}</h3>
+          </td>
+          <td >
+            <h3 class="table-data-name fade-in-class">Key:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['key']}}</h3>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <h3 class="table-data-name fade-in-class">Popularity:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{popularity}}%</h3>
+          </td>
+          <td >
+            <h3 class="table-data-name fade-in-class">Year:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{release_year}}</h3>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <h3 class="table-data-name fade-in-class">Danceability:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['danceability']}}%</h3>
+          </td>
+          <td >
+            <h3 class="table-data-name fade-in-class">Vocal:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['instrumentalness']}}%</h3>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <h3 class="table-data-name fade-in-class">Energy:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['energy']}}%</h3>
+          </td>
+          <td >
+            <h3 class="table-data-name fade-in-class">Mood:</h3>
+          </td>
+          <td >
+            <h3 class="table-data-value fade-in-class">{{audio_features['valence']}}%</h3>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <br>
+
+    </div>
+
+  </center>
 
 
 
 
 
 
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
+  <script src="{{ url_for('static', filename='js/index.js') }}" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>
