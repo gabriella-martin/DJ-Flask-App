@@ -21,17 +21,17 @@
   <br>
   <center>
     <div id = spotify-player-container ">
-      <br>
 
-      <br>
 
       <iframe class = spotify-player s src={{url}} width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
       fullscreen; picture-in-picture" loading="lazy"></iframe>
 
   <br>
-  <br>
+<br id="line-break">
   <div>
 </div>
+
+<div id="right-song-question">
   <h5>Is this the right track?</h5>
   <div class="button-box">
     <button onclick="show_personalisation()"  value="Yes" name="yesorno" class="btn btn-dark btn-sm m-1 ">Yes</button>
@@ -41,13 +41,52 @@
     <button type="submit" value="No" name="yesorno" class="btn btn-dark btn-sm m-1 ">No</button>
   </form>
 </div>
-<br>
 </div>
-  <div id="personalisation-info-box">
+<br>
 
-      <h1>Hidden info</h1>
+</div>
 
+  <div id="personalisation-info-box" class="personalisation-box">
+    <br>
+  <form style="color: white;" method="POST">
+    {{ form.hidden_tag() }}
+    <table>
+    <tr>
+      <td>BPM: </td>
+      <td>{{form.bpm_range}}</td>
+       <td>KEY: </td>
+       <td>{{form.key_range}}</td>
+    </tr>
+    <tr>
+      <td>POPULARITY:</td>
+      <td>{{form.popularity}}</td>
+      <td >MAX YR:</td>
+      <td>{{form.max_year}}</td>
+    </tr>
+    <tr>
+    
+      <td>DANCEABILITY</td>
+      <td>{{form.danceability}}</td>
+      <td>VOCALNESS:</td>
+      <td>{{form.vocal}}</td>
+    
+    <tr>
+      <td>ENERGY:</td>
+    <td>{{form.energy}}</td>
+      <td>MOOD:</td>
+      <td>{{form.mood}}</td>
+    </tr>
+      
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-dark btn-sm m-1 ">Submit</button>
+</form>
+    
+    
+    
 
+  </form>
+  <br>
     </div>
     <br>
     <div id = 'information-box'>
