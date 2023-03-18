@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from forms import SongInputForm, PersonalisationForm
 from decouple import config
 
-from track_analysis import TrackAudioAnalysis
-from track_recommendations import TrackRecommendations
+from spotify_api_pipelines.track_analysis import TrackAudioAnalysis
+from spotify_api_pipelines.track_recommendations import TrackRecommendations
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = config('FLASK_SECRET_KEY')
