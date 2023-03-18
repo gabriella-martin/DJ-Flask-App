@@ -21,6 +21,7 @@ class TrackAudioAnalysis:
         client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
         self.sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
         song_search = self.sp.search(search_query, limit=1)
+
         self.track_id = song_search['tracks']['items'][0]['id']
         self.embed_url = f'https://open.spotify.com/embed/track/{self.track_id}?utm_source=generator&theme=0'
 
@@ -64,26 +65,20 @@ class TrackAudioAnalysis:
         '''
 
         audio_features = self.sp.audio_features(self.track_id)
-        danceability = audio_features[0]['danceability']
+        danceability =audio_features[0]['danceability']
         energy = audio_features[0]['energy']
         key = audio_features[0]['key']
         instrumentalness = audio_features[0]['instrumentalness']
         valence = audio_features[0]['valence']
         bpm = audio_features[0]['tempo']
-        audio_features = {'danceability':danceability, 'energy': energy, 'key': key, 'instrumentalness':instrumentalness, 
-                          'valence': valence, 'bpm': bpm}
+        audio_features = {'danceability':danceability, 'energy': energy, 'key': key, 'vocal':instrumentalness, 
+                          'mood': valence, 'bpm': bpm}
 
         return audio_features
+    
 
-    def get_audio_analysis(self):
+    
 
-        '''tempo_confidence - the confidence, from 0.0 to 1.0, of the reliability of the tempo.
-        key_confidence - The confidence, from 0.0 to 1.0, of the reliability of the key.'''
-        audio_analysis = self.sp.audio_analysis(self.track_id)
-        tempo_reliability = (audio_analysis['track']['tempo_confidence'])
-        key_reliability = (audio_analysis['track']['key_confidence'])
-        audio_analysis = {'tempo_reliability': tempo_reliability, 'key_reliability': key_reliability}
-        return audio_analysis
 
 
 
