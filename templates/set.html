@@ -20,63 +20,20 @@
 
   <br>
   <center>
-  <table id= "set-list-table">
-
-    <tr>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[0]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[1]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-    </tr>
-    <tr>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[2]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[3]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-    </tr>
-    <tr>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[4]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-    
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[5]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
+    <table id= "set-list-table">
   
-    </tr>
-    <tr>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[6]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
+      {% for i in urls %}
+      <iframe class="spotify-player" src={{i}} width="50%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
         fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
+        <br>
+      
+      {%endfor%}
 
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[7]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-    </tr>
-    <tr>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[8]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-      <td class="set-list-table-data"><iframe class="spotify-player" src={{recs[9]}} width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
-        fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </td>
-
-    </tr>
-  </table>
-</center>
-
-
-
-
+    </table>
+  </center>
+  
+  
+  
 
 
   <script src="{{ url_for('static', filename='js/index.js') }}" type="module"></script>

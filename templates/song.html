@@ -23,7 +23,7 @@
     <div id = spotify-player-container ">
 
 
-      <iframe class = spotify-player s src={{url}} width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; 
+      <iframe class = spotify-player s src={{url}} width="60%" height="152" frameBorder="0" allowfullscreen="form-select form-select-sm" allow="autoplay; clipboard-write; encrypted-media; 
       fullscreen; picture-in-picture" loading="lazy"></iframe>
 
   <br>
@@ -37,8 +37,7 @@
     <button onclick="show_personalisation()"  value="Yes" name="yesorno" class="btn btn-dark btn-sm m-1 ">Yes</button>
   </div> 
   <div class="button-box">
-  <form method="POST" action="">
-    <button type="submit" value="No" name="yesorno" class="btn btn-dark btn-sm m-1 ">No</button>
+    <button onclick="back_to_search()"  value="No" name="yesorno" class="btn btn-dark btn-sm m-1 ">No</button>
   </form>
 </div>
 </div>
@@ -46,40 +45,43 @@
 
 </div>
 
-  <div id="personalisation-info-box" class="personalisation-box">
+  <div id="personalisation-info-box" class="personalisation-box fade-in-class">
     <br>
   <form style="color: white;" method="POST">
     {{ form.hidden_tag() }}
+    <p>What conditions would you like to have for related tracks?</p>
+    <br>
     <table>
+
     <tr>
-      <td>BPM: </td>
-      <td>{{form.bpm_range}}</td>
-       <td>KEY: </td>
-       <td>{{form.key_range}}</td>
+      <td class="table-data-name-2">BPM: </td>
+      <td class="table-data-value-2">{{form.bpm_range(class="form-select form-select-sm")}}</td>
+       <td class="table-data-name-2">KEY: </td>
+       <td class="table-data-value-2">{{form.key_range(class="form-select form-select-sm")}}</td>
     </tr>
     <tr>
-      <td>POPULARITY:</td>
-      <td>{{form.popularity}}</td>
-      <td >MAX YR:</td>
-      <td>{{form.max_year}}</td>
+      <td class="table-data-name-2">POPULARITY:</td>
+      <td class="table-data-value-2">{{form.popularity(class="form-select form-select-sm")}}</td>
+      <td class="table-data-name-2" >DANCEABILITY:</td>
+      <td class="table-data-value-2">{{form.danceability(class="form-select form-select-sm")}}</td>
+
     </tr>
-    <tr>
+
     
-      <td>DANCEABILITY</td>
-      <td>{{form.danceability}}</td>
-      <td>VOCALNESS:</td>
-      <td>{{form.vocal}}</td>
+
     
     <tr>
-      <td>ENERGY:</td>
-    <td>{{form.energy}}</td>
-      <td>MOOD:</td>
-      <td>{{form.mood}}</td>
+      <td class="table-data-name-2">ENERGY:</td>
+    <td class="table-data-value-2">{{form.energy(class="form-select form-select-sm")}}</td>
+      <td class="table-data-name-2">MOOD:</td>
+      <td  class="table-data-value-2">{{form.mood(class="form-select form-select-sm")}}</td>
     </tr>
       
-    </tr>
+ 
   </table>
-  <button type="submit" class="btn btn-dark btn-sm m-1 ">Submit</button>
+
+  <br>
+  <button type="submit" class="btn btn-light ">Submit</button>
 </form>
     
     
@@ -98,13 +100,13 @@
             <h3 class = "table-data-name fade-in-class">BPM:</h3>
          </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['bpm']}}</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['bpm']}}</h3>
           </td>
           <td >
             <h3 class="table-data-name fade-in-class">Key:</h3>
           </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['key']}}</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['key']}}</h3>
           </td>
         </tr>
         <tr>
@@ -112,41 +114,28 @@
             <h3 class="table-data-name fade-in-class">Popularity:</h3>
           </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{popularity}}%</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['popularity']}}%</h3>
           </td>
-          <td >
-            <h3 class="table-data-name fade-in-class">Year:</h3>
-          </td>
-          <td >
-            <h3 class="table-data-value fade-in-class">{{release_year}}</h3>
-          </td>
-        </tr>
-        <tr>
           <td >
             <h3 class="table-data-name fade-in-class">Danceability:</h3>
           </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['danceability']}}%</h3>
-          </td>
-          <td >
-            <h3 class="table-data-name fade-in-class">Vocal:</h3>
-          </td>
-          <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['instrumentalness']}}%</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['danceability']}}%</h3>
           </td>
         </tr>
+
         <tr>
           <td >
             <h3 class="table-data-name fade-in-class">Energy:</h3>
           </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['energy']}}%</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['energy']}}%</h3>
           </td>
           <td >
             <h3 class="table-data-name fade-in-class">Mood:</h3>
           </td>
           <td >
-            <h3 class="table-data-value fade-in-class">{{audio_features['valence']}}%</h3>
+            <h3 class="table-data-value fade-in-class">{{track_features_formatted['mood']}}%</h3>
           </td>
         </tr>
       </table>
