@@ -14,9 +14,7 @@ class SongInputForm(FlaskForm):
 class PersonalisationForm(FlaskForm):
     bpm_range = SelectField('What BPM range?', choices=['±5%', '±7%', 'No Preference'])
     key_range = SelectField('What key range?', choices = ['Same Key', 'Complimentary Key', 'No Preference'])
-    time_period = SelectField('Time Period?', choices = ['Past 3 Years', 'Past Decade', "2000's", "<2000's"])
     popularity = SelectField('What popularity range?', choices = ['No Preference', 'Less Popular', 'More Popular'])
     danceability= SelectField('What popularity range?', choices = ['No Preference', 'Less Danceable', 'More Danceable'])
-    vocal= SelectField('What popularity range?', choices = ['No Preference', 'Less Vocal', 'More Vocal'])
     energy= SelectField('What popularity range?', choices = ['No Preference', 'Less Energy', 'More Energy'])
     mood= SelectField('What popularity range?', choices = ['No Preference', 'Sadder', 'Happier'])
