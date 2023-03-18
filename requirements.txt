@@ -1,0 +1,4 @@
+Flask==2.2.3
+python-decouple==3.8
+spotipy==2.22.1
+WTForms==3.0.1
