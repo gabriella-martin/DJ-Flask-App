@@ -37,8 +37,7 @@ def song_page( track_id):
 def set_page( track_id):
     form_results = session.get('form_results')
     track_features_unformatted = (TrackAudioAnalysis(track_id=track_id)).get_unformatted_track_details()
-    tr = TrackRecommendations(track_id=track_id, form_results=form_results, track_features=track_features_unformatted)
-    urls = tr.get_recommendations()
+    urls = (TrackRecommendations(track_id=track_id, form_results=form_results, track_features=track_features_unformatted)).get_recommendations()
     if request.method == 'POST':
         form_results = request.form
         try:
