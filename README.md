@@ -1,4 +1,4 @@
-<center><h1>DJ Flask Full-Stack App</h1></center>
+<h1 align="center">DJ Flask Full-Stack App</h1>
 
 *The best way to understand this app is to visit it [here](http://gabriella0101.pythonanywhere.com/)*
 
