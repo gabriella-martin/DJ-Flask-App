@@ -1,29 +1,31 @@
 
 body{background-color: bisque;}
-
-.table-data-name{color: bisque;padding:0 0px 0 100px}
-.table-data-value{color: white;padding:0 100px 0 20px}
-.table-data-name-2{color: bisque;padding:0 10px 0 0px; text-align: center;}
-.table-data-value-2{color: white;padding:0 40px 0 0}
+.buttons{padding:0;}
+.table-data-name{color: bisque;padding:0 0 0 0;}
+.table-data-value{color: white;padding:0  0 0 50%}
+.table-data-name-2{color: bisque;padding-right:50% ; text-align: center;}
+.table-data-value-2{color: white;padding:0 0 0  0 }
 .page-heading{color: bisque;}
 .navbar{background-color: #282828;}
 .spotify-player{border-radius:12px}
 .set-list-table-date{width: 50%;}
-.dj-image{position: relative;   right: 120px;}
-.spotify-image{position: relative;   left: 120px;}
+.dj-image{position: relative;   right: 10%;}
+.spotify-image{position: relative;   left: 10%;}
 .button-box{display: inline-block;}
 .radio-button{color: white;}
+.empty-column{width: 20%;}
+
 .fade-in-class{animation: fadeIn 2s;}
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
 
-
-#song-query-box{width: 25%;;margin-top: 2%; outline-offset: 10%;}
+#table-information-box{table-layout:fixed ;}
+#song-query-box{width: 50%;;margin-top: 2%; outline-offset: 10%;}
 #spotify-player-container{width: 75%;}
-.personalisation-box{background-color: #282828; width: 55%;border-radius:12px}
-#information-box{background-color: #282828; width: 65%;border-radius:12px}
+.personalisation-box{background-color: #282828; width: 80%;border-radius:12px}
+#information-box{background-color: #282828; width: 100%;border-radius:12px;}
 #set-list-table{width: 80%;}
 #personalisation-info-box{display: none;animation: fadeIn 1s;}
 #right-song-question{display: block;}

@@ -11,3 +11,6 @@ function back_to_search(){
 
     window.location.href = "/";
 }
+
+
+
