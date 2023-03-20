@@ -1,11 +1,9 @@
-import spotipy
-from decouple import config
-from spotipy.oauth2 import SpotifyClientCredentials
-from dotenv import load_dotenv
-load_dotenv()
 import os
-# python3 spotify.py
+import spotipy
+from dotenv import load_dotenv
+from spotipy.oauth2 import SpotifyClientCredentials
 
+load_dotenv()
 
 class TrackAudioAnalysis:
 

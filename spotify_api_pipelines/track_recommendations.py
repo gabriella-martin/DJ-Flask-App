@@ -1,14 +1,16 @@
+import os
 import spotipy
-from decouple import config
+from dotenv import load_dotenv
 from spotipy.oauth2 import SpotifyClientCredentials
 
-# python3 track_recommendations.py
+load_dotenv()
+
 
 class TrackRecommendations():
 
     def __init__(self,track_id, form_results, track_features):
-        cid = config('SPOTIFY_CLIENT_ID')
-        secret = config('SPOTIFY_CLIENT_SECRET')
+        cid = os.getenv('SPOTIFY_CLIENT_ID')
+        secret = os.getenv('SPOTIFY_CLIENT_SECRET')
         client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
         self.sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
         self.track_id = track_id
@@ -129,7 +131,7 @@ class TrackRecommendations():
                                                   max_key=preferences_list[3], max_popularity=preferences_list[4], min_popularity=preferences_list[5],
                                                    min_danceability=preferences_list[6],
                                                   max_danceability=preferences_list[7], min_energy=preferences_list[8], max_energy=preferences_list[9], min_valence = preferences_list[10],
-                                                  max_valence=preferences_list[11], limit=10)
+                                                  max_valence=preferences_list[11])
         
         urls = []
         tracks = recommendations['tracks']
