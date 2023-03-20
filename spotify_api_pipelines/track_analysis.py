@@ -1,28 +1,24 @@
 import spotipy
 from decouple import config
 from spotipy.oauth2 import SpotifyClientCredentials
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
 # python3 spotify.py
 
 
-cid = config('SPOTIFY_CLIENT_ID')
-secret = config('SPOTIFY_CLIENT_SECRET')
-client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-
-search_query = "save a kiss ps1 jessie ware"
-
 class TrackAudioAnalysis:
 
-    def __init__(self,search_query):
-        cid = config('SPOTIFY_CLIENT_ID')
-        secret = config('SPOTIFY_CLIENT_SECRET')
+    def __init__(self,search_query=None, track_id=None):
+        cid = os.getenv('SPOTIFY_CLIENT_ID')
+        secret = os.getenv('SPOTIFY_CLIENT_SECRET')
         client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
         self.sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-        song_search = self.sp.search(search_query, limit=1)
-
-        self.track_id = song_search['tracks']['items'][0]['id']
+        if search_query:
+            song_search = self.sp.search(search_query, limit=1)
+            self.track_id = song_search['tracks']['items'][0]['id']
+        else:
+            self.track_id = track_id
         self.embed_url = f'https://open.spotify.com/embed/track/{self.track_id}?utm_source=generator&theme=0'
 
     def get_track_details(self):
@@ -76,8 +72,20 @@ class TrackAudioAnalysis:
 
         return audio_features
     
-
+    def get_unformatted_track_details(self):
+        track_details = self.get_track_details()
+        audio_features = self.get_audio_features()
+        track_features = track_details | audio_features
+        return track_features
     
+    def format_track_details(self):
+        track_features = self.get_unformatted_track_details()
+        track_features['danceability'] = round((track_features['danceability'])*100)
+        track_features['energy'] = round((track_features['energy'])*100)
+        track_features['mood'] = round((track_features['mood'])*100)
+        track_features['vocal'] = round((1-track_features['vocal'])*100)
+        track_features['bpm'] = round(track_features['bpm'])   
+        return track_features
 
 
 
