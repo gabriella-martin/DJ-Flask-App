@@ -24,7 +24,10 @@
 
 #### Example:
 
+
 ![Alt Text](static/example.gif)
+
+
 
 #### Back-End:
 The app works as follows:
