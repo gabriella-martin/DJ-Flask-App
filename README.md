@@ -32,14 +32,14 @@
 #### Back-End:
 The app works as follows:
 
-- Ask user for a search query, any song that they would like to find similar tracks for
+- Ask user for a search query, any song that they would like to find similar tracks for - a *Flask form* is used 
 - Use this search query to search the entire Spotify library to retrieve information about the user specified track
-- Ask the user for requirements when searching for similar tracks, these include BPM, key & popularity
+- Ask the user for requirements when searching for similar tracks, these include BPM, key & popularity - another *Flask form* is used
 - Serves the user the similar tracks with the specified requirements
 
 **Spotify's API**: I used two separate scripts, one for [track analysis](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/spotify_api_pipelines/track_analysis.py) and another for [track recommendations](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/spotify_api_pipelines/track_recommendations.py). The goal of the first script is to find the audio characteristics of the user specified track, these characteristics include BPM, key, popularity & energy. This track is now our seed track and its characteristics act as a baseline for recommendations. The second script collects the recommendations of that track with the user defined parameters.
 
-**Flask**: I use the Flask web framework to create the app. The code for the flask app routes is [here](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/main.py) and the code for the forms is [here](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/forms.py). Flask handles the user inputs (POST) like the search query and recommendation parameters with forms which it then sends to the Python script accessing the API, it then serves the corresponding data (GET).
+**Flask**: I use the Flask web framework to create the app. The code for the flask app routes is [here](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/main.py) and the code for the forms is [here](https://github.com/gabriella-martin/DJ-Flask-App/blob/main/forms.py). Flask handles the user inputs **POST** like the search query and recommendation parameters with forms which it then sends to the Python script accessing the API, it then serves the corresponding data **GET**.
 
 #### Front-End:
 
